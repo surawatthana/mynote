@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Validators, Editor, Toolbar } from 'ngx-editor';
 import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 import { MegaMenuItem, MenuItem } from 'primeng/api';
@@ -13,7 +13,8 @@ import { MegaMenuItem, MenuItem } from 'primeng/api';
 export class AppComponent  implements OnInit, OnDestroy {
   title = 'my-note-app';
 
-  
+  panleMenuHeightMargin = 80;
+
   editor!: Editor;
   html!: '';
   orientation = 'vertical';
@@ -31,9 +32,15 @@ export class AppComponent  implements OnInit, OnDestroy {
     ['align_left', 'align_center', 'align_right', 'align_justify'],
   ];
 
+  innerWidth: any;
+  innerHeight: any;
+  panleMenuHeight: string = 700 + 'px';
 
 
   ngOnInit() {
+    this.innerWidth = window.innerWidth;
+    this.innerHeight = window.innerHeight;
+    this.panleMenuHeight = (this.innerHeight - this.panleMenuHeightMargin) +  'px';
     this.editor = new Editor();
     this.html = '';
     this.items = [
@@ -289,5 +296,10 @@ export class AppComponent  implements OnInit, OnDestroy {
     this.editor.destroy();
   }
 
-
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.innerWidth = window.innerWidth;
+    this.innerHeight = window.innerHeight;
+    this.panleMenuHeight = (this.innerHeight - this.panleMenuHeightMargin) +  'px';
+  }
 }

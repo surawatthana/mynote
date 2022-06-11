@@ -10,11 +10,14 @@
         </p-menubar>
     </div>
 
-
     <div class="card-body">
         <div class="card">
             <div class="flex card-container blue-container overflow-hidden">
-                <div class="flex-none flex"><p-panelMenu [model]="panelMenuItems" [style]="{'width':'200px'}"></p-panelMenu></div>
+                <div class="flex-none flex">
+                    <p-scrollPanel [ngStyle]="{width: '100%', 'height': panleMenuHeight}">
+                        <p-panelMenu [model]="panelMenuItems" [style]="{'width':'200px'}"></p-panelMenu>
+                    </p-scrollPanel>
+                </div>
                 <div class="flex-grow-1 flex align-items-left justify-content-left   ">
                     <div class="NgxEditor__Wrapper">
                         <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
