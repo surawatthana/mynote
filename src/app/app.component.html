@@ -2,7 +2,7 @@
     <div class="card-header">
         <p-menubar [model]="items">
             <ng-template pTemplate="start">
-                <img src="../assets/showcase/images/primeng-sidebar.svg" height="40" class="mr-2">
+                <img src="../assets/showcase/images/primeng-sidebar.svg" height="35" class="mr-2">
             </ng-template>
             <ng-template pTemplate="end">
                 <input type="text" pInputText placeholder="Search">
@@ -19,10 +19,7 @@
                     </p-scrollPanel>
                 </div>
                 <div class="flex-grow-1">
-                    <div class="NgxEditor__Wrapper" [style.height]="panelMenuHeight">
-                        <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
-                        <ngx-editor [editor]="editor" [ngModel]="html" [placeholder]="'Type here...'"></ngx-editor>
-                    </div>
+                    <p-editor [(ngModel)]="text" [style]="{'height':panelMenuHeight}"></p-editor>
                 </div>
             </div>
         </div>

@@ -10,8 +10,8 @@ import { MenubarModule } from 'primeng/menubar';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { ButtonModule } from 'primeng/button';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
+import { EditorModule } from 'primeng/editor';
 
-import { NgxEditorModule } from 'ngx-editor';
 @NgModule({
   declarations: [
     AppComponent
@@ -25,7 +25,7 @@ import { NgxEditorModule } from 'ngx-editor';
     PanelMenuModule,
     ScrollPanelModule,
     ButtonModule,
-    NgxEditorModule,
+    EditorModule,
     FormsModule,
     ReactiveFormsModule
   ],

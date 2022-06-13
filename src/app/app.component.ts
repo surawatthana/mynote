@@ -1,5 +1,4 @@
 import { Component, HostListener, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { Validators, Editor, Toolbar } from 'ngx-editor';
 import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 import { MegaMenuItem, MenuItem } from 'primeng/api';
 
@@ -13,25 +12,12 @@ import { MegaMenuItem, MenuItem } from 'primeng/api';
 export class AppComponent  implements OnInit, OnDestroy {
   title = 'my-note-app';
 
-  panelMenuHeightMargin = 80;
+  panelMenuHeightMargin = 100;
 
-  editor!: Editor;
-  html!: '';
+  text!: '';
   orientation = 'vertical';
   items!: MenuItem[];
   panelMenuItems!: MenuItem[];
-
-  toolbar: Toolbar = [
-    ['bold', 'italic'],
-    ['underline', 'strike'],
-    ['code', 'blockquote'],
-    ['ordered_list', 'bullet_list'],
-    [{ heading: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] }],
-    ['link', 'image'],
-    ['text_color', 'background_color'],
-    ['align_left', 'align_center', 'align_right', 'align_justify'],
-  ];
-
   innerWidth: any;
   innerHeight: any;
   panelMenuHeight: string = 700 + 'px';
@@ -41,8 +27,7 @@ export class AppComponent  implements OnInit, OnDestroy {
     this.innerWidth = window.innerWidth;
     this.innerHeight = window.innerHeight;
     this.panelMenuHeight = (this.innerHeight - this.panelMenuHeightMargin) +  'px';
-    this.editor = new Editor();
-    this.html = '';
+    this.text = '';
     this.items = [
       {
         label: 'File',
@@ -188,7 +173,6 @@ export class AppComponent  implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.editor.destroy();
   }
 
   @HostListener('window:resize', ['$event'])
